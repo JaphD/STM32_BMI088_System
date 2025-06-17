@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=0_ADSTM32-Overview.SchDoc|SheetNumber=1
+Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=1_ADSTM32-Power.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=2_ADSTM32-MCU.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=3_ADSTM32-Peripheral.SchDoc|SheetNumber=4
