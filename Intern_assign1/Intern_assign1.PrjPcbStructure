@@ -1,4 +1,4 @@
 Record=TopLevelDocument|FileName=0_ADSTM32-Overview.SchDoc|SheetNumber=1
-Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=1_ADSTM32-Power.SchDoc|SheetNumber=2
-Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=2_ADSTM32-MCU.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=0_ADSTM32-Overview.SchDoc|FileName=3_ADSTM32-Peripheral.SchDoc|SheetNumber=4
+Record=SheetSymbol|SourceDocument=0_ADSTM32-Overview.SchDoc|Designator=[2] Microcontroller|SchDesignator=[2] Microcontroller|FileName=2_ADSTM32-MCU.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=2_ADSTM32-MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=0_ADSTM32-Overview.SchDoc|Designator=[3] Peripheral|SchDesignator=[3] Peripheral|FileName=3_ADSTM32-Peripheral.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=3_ADSTM32-Peripheral.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=0_ADSTM32-Overview.SchDoc|Designator=U_1_ADSTM32-Power|SchDesignator=U_1_ADSTM32-Power|FileName=1_ADSTM32-Power.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=1_ADSTM32-Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
