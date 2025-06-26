@@ -1,0 +1,609 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD25\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">6/26/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">10:44:16 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc" class="file"><acronym title="C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc">C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">87</td></tr>
+</table>
+</td>
+</table><a name="IDRW0SW0OTGYIHNH3KAJW0FOJKMDY4BFKHGRF15DI3Y4FHPJ3WD5XI"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0EKR1WC5S0PCLCYSIS42UKEBTBPINKJC5S4T33OHUWZKMIJCYZ2F">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC44ZUQ1MRLR3FVPFEIP4QDW0ZCL2OSIIKPBKBTJBX1QN1K3IDKRI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLSFR2ZMMXMGOML5E2MNFLLRGLJTB2YB2CP1FISDIGSY5G34INMJE">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">12</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMFAQGALT03VQM1OQESJ2WI1GJPSONCBNIXIFKLHQFNWSJRXP5QPM">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMKUZGIA4LIS2OSFRWR2VEJ5TPCLVOAQORIMEIQCIQSL44I1XBMMH">Width Constraint (Min=0.15mm) (Max=1mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZJATRIE0V4HGF10FQVSOEHPIAFUI0T3FAUWJ1WPGTA5TEF15DKNH">Routing Topology Rule(Topology=Shortest) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDL5MPT1Q5HZYBMXOIBKS0SCYR0NSVEADT5LGBHYLVQRAUHKA2AUVI">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4TP0NPAWYO2MP2JREOGUTQBPXFDM1QWXG1CGHVHKN0UGGOHDMYPF">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGJV4LXB3YK0WNUYMO1T3SFUEOK0VMNP3H1IRMOI0MZG3FASP24EM">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDE1BNVGKEC51IHUH0ZAYBU3UOHCG52HZRJZOI4PMVLK1NECUQDVMC">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">52</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIEJB5HTBD5XAPBA3KRJQDIVDVN45S5NKWAZOXYLDEO4KDFQJWBOB">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAL2QNLDYTSLIPDH5TDUZ44UA2EUPPPABEPUFXXPNZN220IIVUZEK">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCWX0WCIASTSYD4TXEFIWEYZIKICQD2F5B4YFOYOUYPBUFXG2SNY">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAZ00RM2NEESFLLKDLLWJO3NGDCTQA40MNEXEP5OH01CU2X15WWEG">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">87</td>
+</tr>
+</table><br><a name="IDC44ZUQ1MRLR3FVPFEIP4QDW0ZCL2OSIIKPBKBTJBX1QN1K3IDKRI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-MH(-20.017mm,2.89mm) on Multi-Layer And Polygon Region (17 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-MH(-20.017mm,-2.89mm) on Multi-Layer And Polygon Region (17 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-MH(-20.017mm,2.89mm) on Multi-Layer And Polygon Region (20 hole(s)) Top Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-MH(-20.017mm,-2.89mm) on Multi-Layer And Polygon Region (20 hole(s)) Top Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2761.33mil|Location2.X=2793.771mil|Location1.Y=3638.11mil|Location2.Y=3670.551mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2761.33mil|Location2.X=2793.771mil|Location1.Y=3638.11mil|Location2.Y=3670.551mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-SH(-23.697mm,4.32mm) on Multi-Layer And Track (-24.57mm,-12.03mm)(-24.57mm,11.93mm) on Top Layer Location : [X = 70.55mm][Y = 92.82mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2761.33mil|Location2.X=2793.771mil|Location1.Y=3297.952mil|Location2.Y=3330.394mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2761.33mil|Location2.X=2793.771mil|Location1.Y=3297.952mil|Location2.Y=3330.394mil|Absolute=True">Short-Circuit Constraint: Between Pad J100-SH(-23.697mm,-4.32mm) on Multi-Layer And Track (-24.57mm,-12.03mm)(-24.57mm,11.93mm) on Top Layer Location : [X = 70.55mm][Y = 84.18mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-2.79mm,-4.319mm) on Multi-Layer And Polygon Region (1 hole(s)) Top Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-2.79mm,-4.319mm) on Multi-Layer And Polygon Region (17 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-2.79mm,-6.351mm) on Multi-Layer And Polygon Region (1 hole(s)) Top Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-2.79mm,-6.351mm) on Multi-Layer And Polygon Region (17 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-7.87mm,-5.335mm) on Multi-Layer And Polygon Region (17 hole(s)) Bottom Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=125795.18mil|Location2.X=-125795.18mil|Location1.Y=125795.18mil|Location2.Y=-125795.18mil|Absolute=True">Short-Circuit Constraint: Between Pad J200-MH(-7.87mm,-5.335mm) on Multi-Layer And Polygon Region (20 hole(s)) Top Layer Location : [X = 0mm][Y = 0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLSFR2ZMMXMGOML5E2MNFLLRGLJTB2YB2CP1FISDIGSY5G34INMJE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3065.748mil|Location2.X=3073.622mil|Location1.Y=3405.512mil|Location2.Y=3413.386mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3065.748mil|Location2.X=3073.622mil|Location1.Y=3405.512mil|Location2.Y=3413.386mil|Absolute=True">Un-Routed Net Constraint: Polygon  (NONET_L01_P002) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.118mil|Location2.X=4628.118mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.118mil|Location2.X=4628.118mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True">Un-Routed Net Constraint: Track (22.357mm,-14mm)(22.357mm,-14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.118mil|Location2.X=4637.677mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4618.118mil|Location2.X=4637.677mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True">Un-Routed Net Constraint: Track (22.357mm,-14mm)(22.6mm,-14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2852.087mil|Location2.X=4641.614mil|Location1.Y=4030.433mil|Location2.Y=4040.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2852.087mil|Location2.X=4641.614mil|Location1.Y=4030.433mil|Location2.Y=4040.433mil|Absolute=True">Un-Routed Net Constraint: Track (-22.5mm,14mm)(22.7mm,14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4627.677mil|Location2.X=4714.646mil|Location1.Y=2928.071mil|Location2.Y=3015.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4627.677mil|Location2.X=4714.646mil|Location1.Y=2928.071mil|Location2.Y=3015.039mil|Absolute=True">Un-Routed Net Constraint: Track (22.6mm,-14mm)(24.555mm,-12.045mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2848.15mil|Location2.X=4037.48mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2848.15mil|Location2.X=4037.48mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True">Un-Routed Net Constraint: Track (-22.6mm,-14mm)(7.355mm,-14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4631.614mil|Location2.X=4714.646mil|Location1.Y=3957.402mil|Location2.Y=4040.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4631.614mil|Location2.X=4714.646mil|Location1.Y=3957.402mil|Location2.Y=4040.433mil|Absolute=True">Un-Routed Net Constraint: Track (22.7mm,14mm)(24.555mm,12.145mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4704.646mil|Location2.X=4714.646mil|Location1.Y=3005.039mil|Location2.Y=3967.402mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4704.646mil|Location2.X=4714.646mil|Location1.Y=3005.039mil|Location2.Y=3967.402mil|Absolute=True">Un-Routed Net Constraint: Track (24.555mm,-12.045mm)(24.555mm,12.145mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2862.087mil|Location1.Y=3948.937mil|Location2.Y=4040.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2862.087mil|Location1.Y=3948.937mil|Location2.Y=4040.433mil|Absolute=True">Un-Routed Net Constraint: Track (-24.57mm,11.93mm)(-22.5mm,14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2858.15mil|Location1.Y=2928.071mil|Location2.Y=3015.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2858.15mil|Location1.Y=2928.071mil|Location2.Y=3015.63mil|Absolute=True">Un-Routed Net Constraint: Track (-24.57mm,-12.03mm)(-22.6mm,-14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2780.591mil|Location1.Y=3005.63mil|Location2.Y=3958.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2770.591mil|Location2.X=2780.591mil|Location1.Y=3005.63mil|Location2.Y=3958.937mil|Absolute=True">Un-Routed Net Constraint: Track (-24.57mm,-12.03mm)(-24.57mm,11.93mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.48mil|Location2.X=4628.118mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4027.48mil|Location2.X=4628.118mil|Location1.Y=2928.071mil|Location2.Y=2938.071mil|Absolute=True">Un-Routed Net Constraint: Track (7.355mm,-14mm)(22.357mm,-14mm) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDE1BNVGKEC51IHUH0ZAYBU3UOHCG52HZRJZOI4PMVLK1NECUQDVMC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3067.013mil|Location2.X=3078.263mil|Location1.Y=3736.009mil|Location2.Y=3747.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3067.013mil|Location2.X=3078.263mil|Location1.Y=3736.009mil|Location2.Y=3747.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C100-2(-17.425mm,7.125mm) on Top Layer And Pad FB100-1(-17.225mm,6mm) on Top Layer [Top Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.367mil|Location2.X=3118.617mil|Location1.Y=3736.009mil|Location2.Y=3747.259mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3107.367mil|Location2.X=3118.617mil|Location1.Y=3736.009mil|Location2.Y=3747.259mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.172mm &lt; 0.254mm) Between Pad C101-2(-15.7mm,7.125mm) on Top Layer And Pad FB100-2(-16.225mm,6mm) on Top Layer [Top Solder] Mask Sliver [0.172mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3232.396mil|Location2.X=3245.358mil|Location1.Y=3872.063mil|Location2.Y=3883.313mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3232.396mil|Location2.X=3245.358mil|Location1.Y=3872.063mil|Location2.Y=3883.313mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.231mm &lt; 0.254mm) Between Pad C102-1(-13.675mm,9.118mm) on Top Layer And Via (-12.57mm,10.5mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.231mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.691mil|Location2.X=3441.941mil|Location1.Y=3818.961mil|Location2.Y=3830.211mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3430.691mil|Location2.X=3441.941mil|Location1.Y=3818.961mil|Location2.Y=3830.211mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.072mm &lt; 0.254mm) Between Pad C103-1(-6.8mm,9.182mm) on Top Layer And Via (-8.275mm,8.625mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.072mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4522.327mil|Location2.X=4533.577mil|Location1.Y=3655.791mil|Location2.Y=3667.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4522.327mil|Location2.X=4533.577mil|Location1.Y=3655.791mil|Location2.Y=3667.041mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.077mm &lt; 0.254mm) Between Pad C200-1(19.3mm,4.25mm) on Top Layer And Via (20.43mm,4.5mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.077mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.824mil|Location2.X=3090.074mil|Location1.Y=3725.674mil|Location2.Y=3736.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.824mil|Location2.X=3090.074mil|Location1.Y=3725.674mil|Location2.Y=3736.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad FB100-1(-17.225mm,6mm) on Top Layer And Pad FB100-2(-16.225mm,6mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4304.217mil|Location2.X=4315.467mil|Location1.Y=3556.383mil|Location2.Y=3567.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4304.217mil|Location2.X=4315.467mil|Location1.Y=3556.383mil|Location2.Y=3567.633mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.197mm &lt; 0.254mm) Between Pad FB200-1(14.125mm,2.475mm) on Top Layer And Pad FB200-2(14.125mm,1.475mm) on Top Layer [Top Solder] Mask Sliver [0.197mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3588.863mil|Location2.Y=3600.113mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3588.863mil|Location2.Y=3600.113mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A1B12(-18.942mm,3.2mm) on Top Layer And Pad J100-A4B9(-18.942mm,2.4mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.385mil|Location2.X=2976.635mil|Location1.Y=3594.799mil|Location2.Y=3606.049mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.385mil|Location2.X=2976.635mil|Location1.Y=3594.799mil|Location2.Y=3606.049mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.081mm &lt; 0.254mm) Between Pad J100-A1B12(-18.942mm,3.2mm) on Top Layer And Pad J100-MH(-20.017mm,2.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.081mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2971.836mil|Location2.X=2983.086mil|Location1.Y=3621.706mil|Location2.Y=3632.956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2971.836mil|Location2.X=2983.086mil|Location1.Y=3621.706mil|Location2.Y=3632.956mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J100-A1B12(-18.942mm,3.2mm) on Top Layer And Pad J100-SH(-19.517mm,4.32mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3557.367mil|Location2.Y=3568.617mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A4B9(-18.942mm,2.4mm) on Top Layer And Pad J100-B8(-18.942mm,1.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2964.986mil|Location2.X=2976.236mil|Location1.Y=3585.13mil|Location2.Y=3598.251mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2964.986mil|Location2.X=2976.236mil|Location1.Y=3585.13mil|Location2.Y=3598.251mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.133mm &lt; 0.254mm) Between Pad J100-A4B9(-18.942mm,2.4mm) on Top Layer And Pad J100-MH(-20.017mm,2.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.133mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3517.997mil|Location2.Y=3529.247mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3517.997mil|Location2.Y=3529.247mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A5(-18.942mm,1.25mm) on Top Layer And Pad J100-B7(-18.942mm,0.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3537.682mil|Location2.Y=3548.932mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3537.682mil|Location2.Y=3548.932mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A5(-18.942mm,1.25mm) on Top Layer And Pad J100-B8(-18.942mm,1.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3478.627mil|Location2.Y=3489.877mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3478.627mil|Location2.Y=3489.877mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A6(-18.942mm,0.25mm) on Top Layer And Pad J100-A7(-18.942mm,-0.25mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3498.312mil|Location2.Y=3509.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3498.312mil|Location2.Y=3509.562mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A6(-18.942mm,0.25mm) on Top Layer And Pad J100-B7(-18.942mm,0.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3458.942mil|Location2.Y=3470.192mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3458.942mil|Location2.Y=3470.192mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A7(-18.942mm,-0.25mm) on Top Layer And Pad J100-B6(-18.942mm,-0.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3419.572mil|Location2.Y=3430.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3419.572mil|Location2.Y=3430.822mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A8(-18.942mm,-1.25mm) on Top Layer And Pad J100-B5(-18.942mm,-1.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3439.257mil|Location2.Y=3450.507mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3012.682mil|Location2.X=3023.932mil|Location1.Y=3439.257mil|Location2.Y=3450.507mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-A8(-18.942mm,-1.25mm) on Top Layer And Pad J100-B6(-18.942mm,-0.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3368.391mil|Location2.Y=3379.641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3368.391mil|Location2.Y=3379.641mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-B1A12(-18.942mm,-3.2mm) on Top Layer And Pad J100-B4A9(-18.942mm,-2.4mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.385mil|Location2.X=2976.635mil|Location1.Y=3362.454mil|Location2.Y=3373.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2965.385mil|Location2.X=2976.635mil|Location1.Y=3362.454mil|Location2.Y=3373.704mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.081mm &lt; 0.254mm) Between Pad J100-B1A12(-18.942mm,-3.2mm) on Top Layer And Pad J100-MH(-20.017mm,-2.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.081mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2971.836mil|Location2.X=2983.086mil|Location1.Y=3335.548mil|Location2.Y=3346.798mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2971.836mil|Location2.X=2983.086mil|Location1.Y=3335.548mil|Location2.Y=3346.798mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.168mm &lt; 0.254mm) Between Pad J100-B1A12(-18.942mm,-3.2mm) on Top Layer And Pad J100-SH(-19.517mm,-4.32mm) on Multi-Layer [Top Solder] Mask Sliver [0.168mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3399.887mil|Location2.Y=3411.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3011.206mil|Location2.X=3022.456mil|Location1.Y=3399.887mil|Location2.Y=3411.137mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.254mm) Between Pad J100-B4A9(-18.942mm,-2.4mm) on Top Layer And Pad J100-B5(-18.942mm,-1.75mm) on Top Layer [Top Solder] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2964.986mil|Location2.X=2976.236mil|Location1.Y=3370.294mil|Location2.Y=3383.374mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2964.986mil|Location2.X=2976.236mil|Location1.Y=3370.294mil|Location2.Y=3383.374mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.133mm &lt; 0.254mm) Between Pad J100-B4A9(-18.942mm,-2.4mm) on Top Layer And Pad J100-MH(-20.017mm,-2.89mm) on Multi-Layer [Top Solder] Mask Sliver [0.133mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3477.446mil|Location2.X=3488.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3477.446mil|Location2.X=3488.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-1(-6.6mm,-5.97mm) on Top Layer And Pad J200-2(-6.6mm,-4.7mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3502.446mil|Location2.X=3513.696mil|Location1.Y=3243.588mil|Location2.Y=3254.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3502.446mil|Location2.X=3513.696mil|Location1.Y=3243.588mil|Location2.Y=3254.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-1(-6.6mm,-5.97mm) on Top Layer And Pad J200-3(-5.33mm,-5.97mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.242mil|Location2.X=3465.492mil|Location1.Y=3255.19mil|Location2.Y=3268.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.242mil|Location2.X=3465.492mil|Location1.Y=3255.19mil|Location2.Y=3268.158mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.252mm &lt; 0.254mm) Between Pad J200-1(-6.6mm,-5.97mm) on Top Layer And Pad J200-MH(-7.87mm,-5.335mm) on Multi-Layer [Top Solder] Mask Sliver [0.252mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3502.446mil|Location2.X=3513.696mil|Location1.Y=3293.588mil|Location2.Y=3304.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3502.446mil|Location2.X=3513.696mil|Location1.Y=3293.588mil|Location2.Y=3304.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-2(-6.6mm,-4.7mm) on Top Layer And Pad J200-4(-5.33mm,-4.7mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.242mil|Location2.X=3465.492mil|Location1.Y=3280.312mil|Location2.Y=3293.236mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3454.242mil|Location2.X=3465.492mil|Location1.Y=3280.312mil|Location2.Y=3293.236mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.252mm &lt; 0.254mm) Between Pad J200-2(-6.6mm,-4.7mm) on Top Layer And Pad J200-MH(-7.87mm,-5.335mm) on Multi-Layer [Top Solder] Mask Sliver [0.252mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3527.446mil|Location2.X=3538.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3527.446mil|Location2.X=3538.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-3(-5.33mm,-5.97mm) on Top Layer And Pad J200-4(-5.33mm,-4.7mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3552.446mil|Location2.X=3563.696mil|Location1.Y=3243.588mil|Location2.Y=3254.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3552.446mil|Location2.X=3563.696mil|Location1.Y=3243.588mil|Location2.Y=3254.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-3(-5.33mm,-5.97mm) on Top Layer And Pad J200-5(-4.06mm,-5.97mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3552.446mil|Location2.X=3563.696mil|Location1.Y=3293.588mil|Location2.Y=3304.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3552.446mil|Location2.X=3563.696mil|Location1.Y=3293.588mil|Location2.Y=3304.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-4(-5.33mm,-4.7mm) on Top Layer And Pad J200-6(-4.06mm,-4.7mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.446mil|Location2.X=3588.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3577.446mil|Location2.X=3588.696mil|Location1.Y=3268.588mil|Location2.Y=3279.838mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.204mm &lt; 0.254mm) Between Pad J200-5(-4.06mm,-5.97mm) on Top Layer And Pad J200-6(-4.06mm,-4.7mm) on Top Layer [Top Solder] Mask Sliver [0.204mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3600.523mil|Location2.X=3611.773mil|Location1.Y=3236.665mil|Location2.Y=3250.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3600.523mil|Location2.X=3611.773mil|Location1.Y=3236.665mil|Location2.Y=3250.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.158mm &lt; 0.254mm) Between Pad J200-5(-4.06mm,-5.97mm) on Top Layer And Pad J200-MH(-2.79mm,-6.351mm) on Multi-Layer [Top Solder] Mask Sliver [0.158mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3600.523mil|Location2.X=3611.773mil|Location1.Y=3298.144mil|Location2.Y=3311.761mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3600.523mil|Location2.X=3611.773mil|Location1.Y=3298.144mil|Location2.Y=3311.761mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.158mm &lt; 0.254mm) Between Pad J200-6(-4.06mm,-4.7mm) on Top Layer And Pad J200-MH(-2.79mm,-4.319mm) on Multi-Layer [Top Solder] Mask Sliver [0.158mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.414mil|Location2.X=3365.664mil|Location1.Y=3757.17mil|Location2.Y=3768.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.414mil|Location2.X=3365.664mil|Location1.Y=3757.17mil|Location2.Y=3768.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U100-1(-9.25mm,7.6mm) on Top Layer And Pad U100-2(-10.2mm,7.6mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3317.013mil|Location2.X=3328.263mil|Location1.Y=3757.17mil|Location2.Y=3768.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3317.013mil|Location2.X=3328.263mil|Location1.Y=3757.17mil|Location2.Y=3768.42mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U100-2(-10.2mm,7.6mm) on Top Layer And Pad U100-3(-11.15mm,7.6mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3317.013mil|Location2.X=3328.263mil|Location1.Y=3662.682mil|Location2.Y=3673.932mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3317.013mil|Location2.X=3328.263mil|Location1.Y=3662.682mil|Location2.Y=3673.932mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U100-4(-11.15mm,5.2mm) on Top Layer And Pad U100-5(-10.2mm,5.2mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.414mil|Location2.X=3365.664mil|Location1.Y=3662.682mil|Location2.Y=3673.932mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3354.414mil|Location2.X=3365.664mil|Location1.Y=3662.682mil|Location2.Y=3673.932mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U100-5(-10.2mm,5.2mm) on Top Layer And Pad U100-6(-9.25mm,5.2mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.926mil|Location2.X=4150.176mil|Location1.Y=3421.048mil|Location2.Y=3432.298mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.926mil|Location2.X=4150.176mil|Location1.Y=3421.048mil|Location2.Y=3432.298mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-1(9.95mm,-1.7mm) on Top Layer And Pad U200-2(9.875mm,-1.2mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.544mil|Location2.X=4013.794mil|Location1.Y=3557.43mil|Location2.Y=3568.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.544mil|Location2.X=4013.794mil|Location1.Y=3557.43mil|Location2.Y=3568.68mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-13(7mm,1.675mm) on Top Layer And Pad U200-14(6.5mm,1.75mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.572mil|Location2.X=3976.822mil|Location1.Y=3520.458mil|Location2.Y=3531.708mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.572mil|Location2.X=3976.822mil|Location1.Y=3520.458mil|Location2.Y=3531.708mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-15(6.05mm,1.3mm) on Top Layer And Pad U200-16(6.125mm,0.8mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.572mil|Location2.X=3976.822mil|Location1.Y=3421.048mil|Location2.Y=3432.298mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3965.572mil|Location2.X=3976.822mil|Location1.Y=3421.048mil|Location2.Y=3432.298mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-20(6.125mm,-1.2mm) on Top Layer And Pad U200-21(6.05mm,-1.7mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.544mil|Location2.X=4013.794mil|Location1.Y=3384.076mil|Location2.Y=3395.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4002.544mil|Location2.X=4013.794mil|Location1.Y=3384.076mil|Location2.Y=3395.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-22(6.5mm,-2.15mm) on Top Layer And Pad U200-23(7mm,-2.075mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4101.954mil|Location2.X=4113.204mil|Location1.Y=3384.076mil|Location2.Y=3395.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4101.954mil|Location2.X=4113.204mil|Location1.Y=3384.076mil|Location2.Y=3395.326mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-27(9mm,-2.075mm) on Top Layer And Pad U200-28(9.5mm,-2.15mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.926mil|Location2.X=4150.176mil|Location1.Y=3520.458mil|Location2.Y=3531.708mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.926mil|Location2.X=4150.176mil|Location1.Y=3520.458mil|Location2.Y=3531.708mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-6(9.875mm,0.8mm) on Top Layer And Pad U200-7(9.95mm,1.3mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4101.954mil|Location2.X=4113.204mil|Location1.Y=3557.43mil|Location2.Y=3568.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4101.954mil|Location2.X=4113.204mil|Location1.Y=3557.43mil|Location2.Y=3568.68mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.022mm &lt; 0.254mm) Between Pad U200-8(9.5mm,1.75mm) on Top Layer And Pad U200-9(9mm,1.675mm) on Top Layer [Top Solder] Mask Sliver [0.022mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.95mil|Location2.X=4082.2mil|Location1.Y=3807.859mil|Location2.Y=3819.109mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4070.95mil|Location2.X=4082.2mil|Location1.Y=3807.859mil|Location2.Y=3819.109mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad U300-10(8.45mm,7.775mm) on Top Layer And Via (8.475mm,8.925mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.948mil|Location2.X=3988.198mil|Location1.Y=3803.645mil|Location2.Y=3814.895mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3976.948mil|Location2.X=3988.198mil|Location1.Y=3803.645mil|Location2.Y=3814.895mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.222mm &lt; 0.254mm) Between Pad U300-14(6.45mm,7.775mm) on Top Layer And Via (5.525mm,8.275mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.222mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.808mil|Location2.X=3966.058mil|Location1.Y=3824.099mil|Location2.Y=3835.349mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3954.808mil|Location2.X=3966.058mil|Location1.Y=3824.099mil|Location2.Y=3835.349mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U300-16(5.4mm,9.075mm) on Top Layer And Via (5.525mm,8.275mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.635mil|Location2.X=4101.885mil|Location1.Y=3830.005mil|Location2.Y=3841.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4090.635mil|Location2.X=4101.885mil|Location1.Y=3830.005mil|Location2.Y=3841.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.097mm &lt; 0.254mm) Between Pad U300-8(9.5mm,9.075mm) on Top Layer And Via (8.475mm,8.925mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.097mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.536mil|Location2.X=3426.786mil|Location1.Y=3796.048mil|Location2.Y=3807.298mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415.536mil|Location2.X=3426.786mil|Location1.Y=3796.048mil|Location2.Y=3807.298mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.24mm &lt; 0.254mm) Between Via (-8.07mm,7.5mm) from Top Layer to Bottom Layer And Via (-8.275mm,8.625mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.24mm] / [Bottom Solder] Mask Sliver [0.24mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDIEJB5HTBD5XAPBA3KRJQDIVDVN45S5NKWAZOXYLDEO4KDFQJWBOB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3185.783mil|Location2.X=3197.033mil|Location1.Y=3868.266mil|Location2.Y=3879.516mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3185.783mil|Location2.X=3197.033mil|Location1.Y=3868.266mil|Location2.Y=3879.516mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.157mm &lt; 0.254mm) Between Pad C102-1(-13.675mm,9.118mm) on Top Layer And Text "C102" (-13.175mm,10.051mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.157mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4481.383mil|Location2.X=4492.633mil|Location1.Y=3566.22mil|Location2.Y=3577.47mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4481.383mil|Location2.X=4492.633mil|Location1.Y=3566.22mil|Location2.Y=3577.47mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad C200-2(19.3mm,2.75mm) on Top Layer And Text "C203" (16.647mm,1.025mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4359.921mil|Location2.X=4371.171mil|Location1.Y=3421.242mil|Location2.Y=3432.492mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4359.921mil|Location2.X=4371.171mil|Location1.Y=3421.242mil|Location2.Y=3432.492mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.03mm &lt; 0.254mm) Between Pad C203-1(16.33mm,-1.625mm) on Top Layer And Text "FB200" (15.725mm,-1.458mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.03mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4359.921mil|Location2.X=4371.171mil|Location1.Y=3461.895mil|Location2.Y=3473.145mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4359.921mil|Location2.X=4371.171mil|Location1.Y=3461.895mil|Location2.Y=3473.145mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.03mm &lt; 0.254mm) Between Pad C203-2(16.33mm,-0.125mm) on Top Layer And Text "FB200" (15.725mm,-1.458mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.03mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.973mil|Location2.X=4321.223mil|Location1.Y=3664.651mil|Location2.Y=3675.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4309.973mil|Location2.X=4321.223mil|Location1.Y=3664.651mil|Location2.Y=3675.901mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.242mm &lt; 0.254mm) Between Pad C204-2(14.025mm,4.325mm) on Top Layer And Text "C204" (14.742mm,4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.242mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.621mil|Location2.X=4321.871mil|Location1.Y=3585.033mil|Location2.Y=3596.283mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.621mil|Location2.X=4321.871mil|Location1.Y=3585.033mil|Location2.Y=3596.283mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Pad FB200-1(14.125mm,2.475mm) on Top Layer And Text "FB200" (15.725mm,-1.458mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.621mil|Location2.X=4321.871mil|Location1.Y=3545.667mil|Location2.Y=3556.917mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4310.621mil|Location2.X=4321.871mil|Location1.Y=3545.667mil|Location2.Y=3556.917mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.175mm &lt; 0.254mm) Between Pad FB200-2(14.125mm,1.475mm) on Top Layer And Text "FB200" (15.725mm,-1.458mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.175mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.249mil|Location2.X=4188.499mil|Location1.Y=3343.142mil|Location2.Y=3354.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4177.249mil|Location2.X=4188.499mil|Location1.Y=3343.142mil|Location2.Y=3354.392mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.067mm &lt; 0.254mm) Between Pad R202-2(11.575mm,-3.875mm) on Top Layer And Text "C205" (12mm,-3.333mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.067mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAL2QNLDYTSLIPDH5TDUZ44UA2EUPPPABEPUFXXPNZN220IIVUZEK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.157mil|Location2.X=4179.824mil|Location1.Y=3395.126mil|Location2.Y=3402.792mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4172.157mil|Location2.X=4179.824mil|Location1.Y=3395.126mil|Location2.Y=3402.792mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Arc (10.85mm,-2.25mm) on Top Overlay And Text "C205" (12mm,-3.333mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4133.593mil|Location2.X=4144.843mil|Location1.Y=3565.736mil|Location2.Y=3576.986mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4133.593mil|Location2.X=4144.843mil|Location1.Y=3565.736mil|Location2.Y=3576.986mil|Absolute=True">Silk To Silk Clearance Constraint: (0.225mm &lt; 0.254mm) Between Text "U200" (6.567mm,2.4mm) on Top Overlay And Track (10.047mm,2mm)(10.2mm,2mm) on Top Overlay Silk Text to Silk Clearance [0.225mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.072mil|Location2.X=4149.591mil|Location1.Y=3565.711mil|Location2.Y=3576.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.072mil|Location2.X=4149.591mil|Location1.Y=3565.711mil|Location2.Y=3576.961mil|Absolute=True">Silk To Silk Clearance Constraint: (0.247mm &lt; 0.254mm) Between Text "U200" (6.567mm,2.4mm) on Top Overlay And Track (10.2mm,1.847mm)(10.2mm,2mm) on Top Overlay Silk Text to Silk Clearance [0.247mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

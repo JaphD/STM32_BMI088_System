@@ -168,6 +168,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=NDNXAREH
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Intern_assign1\Design Rule Check - ADSTM32-PCB.html
+DItemRevisionGUID=
+
 [Configuration1]
 Name=Sources
 ParameterCount=0
