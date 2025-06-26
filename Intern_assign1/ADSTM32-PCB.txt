@@ -1,0 +1,12 @@
+Board Information Report
+Filename     : C:\Users\Japhe\OneDrive\Desktop\Internship\DafTech Assignment 1\Intern_assign1\ADSTM32-PCB.PcbDoc
+Date         : 6/26/2025
+Time         : 3:19:15 PM
+Time Elapsed : 00:00:00
+
+Routing Information
+    Routing completion, 100.00%
+    Connections, 87
+    Connections routed, 87
+    Connections remaining, 0
+count : 4
