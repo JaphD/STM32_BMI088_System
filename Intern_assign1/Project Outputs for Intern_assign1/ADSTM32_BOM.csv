@@ -1,0 +1,18 @@
+Comment,Description,Designator,Footprint,LibRef,Quantity,Manufacturer,Manufacturer Part Number
+
+"100n","Capacitor SMD 0603","C100, C101, C200, C201, C202, C203, C204, C205, C300, C301","CAP_0603","CAP_0603","10","",""
+"4u7","Capacitor SMD 0805","C102, C103","CAP_0805","CAP_0805","2","",""
+"22p","Capacitor SMD 0603","C104","CAP_0603","CAP_0603","1","",""
+"120R","Ferrite Bead SMD 0402","FB100, FB200","FB_0402","FB_0402","2","",""
+"USB4105-GF-A-060","USB Connector Type C SMT 12 Pin","J100","USB4105-GF-A-060","USB4105-GF-A-060","1","GCT","USB4105-GF-A-060"
+"SM06B-GHS-TB","Header Connector 6 Position 1.25MM Pitch SMD Horizontal JST GH","J300","SM06B-GHS-TB","SM06B-GHS-TB","1","JST","SM06B-GHS-TB"
+"10u","Shielded Wirewound Inductor 10uH 20% 0.51A 0.72O SMD","L100","FP-NRH2412-MFG","CMP-14484-000582-1","1","",""
+"887k","Resistor SMD 0603","R100","RES_0603","RES_0603","1","",""
+"280k","Resistor SMD 0603","R101","RES_0603","RES_0603","1","",""
+"5k1","Resistor SMD 0603","R102, R103, R200, R201, R202","RES_0603","RES_0603","5","",""
+"LTC3405ES6#TRMPBF","1.5MHz, 300mA
+ Synchronous Step-Down
+ Regulator in ThinSOT","U100","SOT-23-6","LTC3405ES6#TRMPBF","1","Analog Devices","LTC3405ES6#TRMPBF"
+"STM32F042G6U6","ARM Cortex-M0 32-bit MCU, 32 KB Flash, 6 KB Internal RAM, 24 I/Os, 28-Pin UFQFPN, -40 to 85 degC, Tray","U200","STM-UFQFPN28_V","CMP-0304-00112-2","1","STMicroelectronics",""
+"BMI088","Inertial Measurement Unit IMU 6-Axis LGA","U300","BMI088","BMI088","1","Bosch","BMI088"
+"24MHz","Crystal SMD 24MHz 10PPM 7pF 3225","X200","XTAL_3225","TSX-3225_24.0000MF15X-AC","1","Epson","TSX-3225 24.0000MF15X-AC"
