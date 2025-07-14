@@ -32,3 +32,8 @@ The hardware system consists of the following key components:
 ## Tools Used
 
 - **EDA Software**: Altium Designer
+
+![Screenshot 2025-07-08 162426](https://github.com/user-attachments/assets/10621c3e-168c-4237-a3ed-5945cefd155c)
+![Screenshot 2025-07-08 162602](https://github.com/user-attachments/assets/4f92020f-29e4-4906-8c3d-461bc793004b)
+
+
