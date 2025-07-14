@@ -1,0 +1,41 @@
+StiFile 1.2
+# File generated on Mon Jul 14 16:06:02 2025
+
+Electric 1:
+  name: "J100"
+  voltage: 4.99812
+  current: -0.150005
+  pluspin: 1  voltage: 4.99812  current: -8.87843e-05  name: "J100-B4A9"
+  pluspin: 2  voltage: 4.99812  current: -0.149916  name: "J100-A4B9"
+  minpin: 0  voltage: 0  current: 0.150005  name: "J100.min"
+
+Electric 2:
+  name: "U100"
+  voltage: 4.99611
+  current: 0.150005
+  pluspin: 8  voltage: 4.99611  current: 0.0375749  name: "U100-1"
+  pluspin: 7  voltage: 4.99611  current: 0.11243  name: "U100-4"
+  minpin: 0  voltage: 0  current: -0.150005  name: "U100.min"
+
+Electric 3:
+  name: "FB100"
+  voltage: 4.50015e-06
+  current: 0.150005
+  pluspin: 11  voltage: 4.99721  current: 0.150005  name: "FB100-1"
+  minpin: 12  voltage: 4.99721  current: -0.150005  name: "FB100-2"
+
+Electric 4:
+  name: "U100"
+  voltage: -78.8595
+  current: -1.77636e-10
+  pluspin: 8  voltage: 4.99611  current: -0.0374276  name: "U100-1"
+  pluspin: 7  voltage: 4.99611  current: 0.0374276  name: "U100-4"
+  minpin: 13  voltage: 4.99611  current: 2.66454e-10  name: "U100-3"
+
+Electric 5:
+  name: "L100"
+  voltage: -8.79297e-14
+  current: -2.93099e-09
+  pluspin: 14  voltage: 4.99611  current: -2.93099e-09  name: "L100-1"
+  minpin: 15  voltage: 4.99611  current: 2.93099e-09  name: "L100-2"
+

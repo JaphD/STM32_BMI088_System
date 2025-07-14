@@ -1,0 +1,19 @@
+InstanceList size is 4
+Found 2 instances, missed 12 instances (probably disabled in simulation), 2 instances overlapped with other pins or instances
+
+1000000	J100	Found,growthperc=0,findBufferLength=358,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0236975,-0.00432,0.0016)-(-0.0189425,0.00432,0.001635), inputPosition= (-0.0236975,-0.00432,0.0016)-(-0.0189425,0.00432,0.001635)
+1000000	J100	Overlapped with 2,growthperc=0,findBufferLength=358,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0236975,-0.00432,0.0016)-(-0.0189425,0.00432,0.001635), inputPosition= (-0.0236975,-0.00432,0.0016)-(-0.0189425,0.00432,0.001635)
+1000001	U100	Found,growthperc=0,findBufferLength=131,preferential=1, layerIds=[1], stackIds=[1], position= (-0.01115,0.0052,0.0016)-(-0.00925,0.0076,0.001635), inputPosition= (-0.01115,0.0052,0.0016)-(-0.00925,0.0076,0.001635)
+1000001	U100	Overlapped with 7,growthperc=0,findBufferLength=131,preferential=1, layerIds=[1], stackIds=[1], position= (-0.01115,0.0052,0.0016)-(-0.00925,0.0076,0.001635), inputPosition= (-0.01115,0.0052,0.0016)-(-0.00925,0.0076,0.001635)
+1000002	L100	Not found,growthperc=0,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
+1000002	L100	Not found,growthperc=0.01,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0.01,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
+1000002	L100	Not found,growthperc=0.05,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0.05,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
+1000002	L100	Not found,growthperc=0.1,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0.1,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
+1000002	L100	Not found,growthperc=0.2,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0.2,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
+1000002	L100	Not found,growthperc=0.5,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635), inputPosition= (-0.0103,0.009975,0.0016)-(-0.0103,0.011425,0.001635)
+1000003	FB100	Not found,growthperc=0.5,findBufferLength=0,preferential=1, layerIds=[1], stackIds=[1], position= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635), inputPosition= (-0.017225,0.006,0.0016)-(-0.016225,0.006,0.001635)
